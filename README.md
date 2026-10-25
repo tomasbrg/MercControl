@@ -1,8 +1,5 @@
-# MercControl - Etapa 6
 
-Este é o mesmo projeto desktop MercControl da etapa anterior, com as telas originais (`View/*.java` e `View/*.form`) mantidas.
-
-## O que mudou
+# O que mudou
 - `Service/EstoqueService.java`: regras de quantidade e validação de estoque.
 - `Service/VendaService.java`: cálculo e registro de venda, antes dentro de `TelaVenda`.
 - `View/TelaVenda.java`: chama `VendaService`, mantendo o formulário original do NetBeans; corrige atualização da quantidade.
@@ -14,5 +11,3 @@ Abra a pasta MercControl no NetBeans e execute `View.TelaLogin`. Para usar as te
 
 Para testar sem banco, execute o arquivo `Service/TesteRegras.java` (Run File). O `main` testa estoque e cálculo de venda.
 
-## GitHub
-Crie um repositório novo e publique esta pasta. Inclua no relatório o link e prints reais do repositório. Não envie senhas nem configurações pessoais do NetBeans.
