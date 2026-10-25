@@ -5,7 +5,7 @@
 package View;
 
 import DAO.ProdutoDAO;
-import DAO.VendaDAO;
+import Service.VendaService;
 import merccontrol.Produto;
 import merccontrol.ItemVenda;
 import javax.swing.*;
@@ -32,7 +32,9 @@ public class TelaVenda extends javax.swing.JFrame {
           jLabel4.setText("R$ 0,00");
         
     }
-    private void atualizarLabelQuantidade() {}
+    private void atualizarLabelQuantidade() {
+        lblQuantidade.setText(String.valueOf(quantidadeAtual));
+    }
     
     
     private void atualizarTabela() {
@@ -139,7 +141,7 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
-        lblQuantidade.setText("000");
+        lblQuantidade.setText("1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,16 +161,14 @@ public class TelaVenda extends javax.swing.JFrame {
                         .addComponent(jButton1)))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblQuantidade, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -259,29 +259,18 @@ public class TelaVenda extends javax.swing.JFrame {
         JOptionPane.YES_NO_OPTION);
     
     if (confirm == JOptionPane.YES_OPTION) {
-        VendaDAO vendaDAO = new VendaDAO();
-        int vendaId = vendaDAO.registrarVenda(-1, totalCompra);
-        
-        if (vendaId > 0) {
-            ProdutoDAO produtoDAO = new ProdutoDAO();
-            
-            for (ItemVenda item : carrinho) {
-                vendaDAO.adicionarItemVenda(vendaId, 
-                    Integer.parseInt(item.getProdutoId()), 
-                    item.getQuantidade(), 
-                    item.getPreco());
-                
-                Produto produto = produtoDAO.buscarPorId(Integer.parseInt(item.getProdutoId()));
-                int novaQuantidade = produto.getQuantidade() - item.getQuantidade();
-                produtoDAO.atualizarQuantidade(Integer.parseInt(item.getProdutoId()), novaQuantidade);
+        try {
+            if (new VendaService().registrarVenda(carrinho)) {
+                JOptionPane.showMessageDialog(this, "Venda realizada com sucesso!");
+                carrinho.clear();
+                atualizarTabela();
+                quantidadeAtual = 1;
+                atualizarLabelQuantidade();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao registrar venda!");
             }
-            
-            JOptionPane.showMessageDialog(this, "Venda realizada com sucesso!");
-            carrinho.clear();
-            atualizarTabela();
-            quantidadeAtual = 1;
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao registrar venda!");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
     }//GEN-LAST:event_jButton2ActionPerformed

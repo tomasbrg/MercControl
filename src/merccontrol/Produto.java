@@ -18,6 +18,15 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
+    // Mantém compatibilidade com o menu de console da versão anterior.
+    public Produto(String nome, int codigo, double preco, int quantidade) {
+        this(String.valueOf(codigo), nome, "", false, preco, quantidade);
+    }
+
+    public int getCodigo() {
+        return Integer.parseInt(id);
+    }
+
     public String getId() {
         return id;
     }

@@ -2,23 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/merccontrol/Login.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/merccontrol/Cliente.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/merccontrol/Produto.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/dao/ProdutoDAO.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/dao/VendaDAO.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/CadastroCliente.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/CadastroProduto.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/ListaCliente.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/TelaEstoque.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/TelaLogin.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/TelaVenda.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/TelaRelatorio.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/merccontrol/ItemVenda.java</file>
-            <file>file:/C:/Users/Pichau/Desktop/MercControl/src/View/TelaSelecao.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -1,25 +1,18 @@
-# PI MercControl
-(em desenvolvimento)
-tecnologias usadas: Java e MYSQL
-Desenvolvedor: Tomás V.
+# MercControl - Etapa 6
 
-O MercControl é um sistema simples para ajudar pequenas mercearias a gerenciar seus produtos e vendas.
-Ele foi criado para substituir os cadernos e planilhas, facilitando o dia a dia do comerciante
-com controles básicos de estoque e caixa.
+Este é o mesmo projeto desktop MercControl da etapa anterior, com as telas originais (`View/*.java` e `View/*.form`) mantidas.
 
+## O que mudou
+- `Service/EstoqueService.java`: regras de quantidade e validação de estoque.
+- `Service/VendaService.java`: cálculo e registro de venda, antes dentro de `TelaVenda`.
+- `View/TelaVenda.java`: chama `VendaService`, mantendo o formulário original do NetBeans; corrige atualização da quantidade.
+- `merccontrol/Produto.java`: mantém compatibilidade com o menu de console antigo.
+- `Service/TesteRegras.java`: testes simples pelo `main()` sem banco.
 
-Requisitos Funcionais
+## Executar
+Abra a pasta MercControl no NetBeans e execute `View.TelaLogin`. Para usar as telas, configure MySQL, banco `merccontrol`, tabelas existentes e driver MySQL Connector/J no projeto. Os arquivos do banco e o driver não foram fornecidos; portanto, a execução com MySQL depende desse ambiente.
 
-RF001	Cadastrar produtos (nome, código, preço, quantidade)
+Para testar sem banco, execute o arquivo `Service/TesteRegras.java` (Run File). O `main` testa estoque e cálculo de venda.
 
-RF002	Registrar vendas (cliente, forma de pagamento, itens)
-
-RF003	Alertar quando estoque estiver baixo
-
-RF004	Gerar relatórios de vendas
-
-Requisitos Não Funcionais
-
-RNF001	Tempo de resposta rápido (até 2 segundos)
-
-RNF002	interface simples usuário é capaz de usar o sistema em pouco tempo de treinamento
+## GitHub
+Crie um repositório novo e publique esta pasta. Inclua no relatório o link e prints reais do repositório. Não envie senhas nem configurações pessoais do NetBeans.
